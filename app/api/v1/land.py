@@ -52,7 +52,8 @@ def filter():
         Land.total_land_area <= isempty.IsEmpty(form.total_land_area_max),
         Land.price >= isempty.IsEmpty(form.price_min),
         Land.price <= isempty.IsEmpty(form.price_max),
-        Land.deal_date >= isempty.IsEmpty(form.deal_date_min),
+        Land.deal_date > isempty.IsEmpty(form.deal_date_min) if form.land_view_type_choose.data == '2'
+        else Land.deal_date >= isempty.IsEmpty(form.deal_date_min),
         Land.deal_date <= isempty.IsEmpty(form.deal_date_max),
         Land.deal_price >= isempty.IsEmpty(form.deal_price_min),
         Land.deal_price <= isempty.IsEmpty(form.deal_price_max),
